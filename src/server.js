@@ -1,7 +1,7 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import pokemonRoutes from './routes/pokemon.js';
+import pokemonRoutes from '../routes/pokemon.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
