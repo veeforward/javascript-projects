@@ -23,7 +23,18 @@ router.get('/pokemon/:id', async (req, res) => {
     } catch (error) {
         res.status(500).send("Error fetching Pokémon data");
     }
-})   
+}) 
+
+router.get("/search", async (req, res) => {
+    try {
+        const { name } = req.query;
+        if (!name) return res.redirect("/");
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
+        res.render("pages/details", { pokemon: response.data });
+    } catch (error) {
+        res.status(500).send("Error fetching Pokémon data");
+    }
+})
 
 export default router;
    
